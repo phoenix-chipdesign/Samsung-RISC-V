@@ -2,4 +2,4 @@
 NAME: Rohan V Poorma
 College: KLE Institute of Technology
 EmailID:rohanpoorma7@gmail.com 
-Github:phoenix-chipdesign_Github
+Github:https://github.com/phoenix-chipdesign
