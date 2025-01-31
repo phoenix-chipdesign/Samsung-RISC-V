@@ -5,12 +5,6 @@ EmailID:rohanpoorma7@gmail.com
 Github:https://github.com/phoenix-chipdesign   
 
 
-# Samsung-RISC-V
-NAME: Rohan V Poorma  
-College: KLE Institute of Technology  
-EmailID:rohanpoorma7@gmail.com   
-Github:https://github.com/phoenix-chipdesign   
-
 <details>
 <summary><b>Task 1:</b>Task is to install all the essential tools required for this samsung-RISCV  Workshop such as Ubuntu on VMBox & refer to C based and RISCV based lab videos and execute the task of compiling the C code using gcc and riscv compiler</summary><br>
 
