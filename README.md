@@ -6,7 +6,7 @@ Github:https://github.com/phoenix-chipdesign
 
 
 <details>
-<summary><b>Task 1:</b>Task is to install all the essential tools required for this samsung-RISCV  Workshop such as Ubuntu on VMBox & refer to C based and RISCV based lab videos and execute the task of compiling the C code using gcc and riscv compiler</summary><br>
+<summary><b>Task 1:</b>Task is to install all the essential tools required for this samsung-RISCV  Workshop & refer to C based and RISCV based lab videos and execute the task of compiling the C code using gcc and riscv compiler</summary><br>
 
 ### Install Ubuntu 20.04 LTS on Oracle Virtual Machine Box
 
