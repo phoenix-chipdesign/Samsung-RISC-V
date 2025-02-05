@@ -4,9 +4,8 @@ College: KLE Institute of Technology
 EmailID:rohanpoorma7@gmail.com   
 Github:https://github.com/phoenix-chipdesign   
 
-
 <details>
-<summary><b>Task 1:</b>Task is to install all the essential tools required for this samsung-RISCV  Workshop & refer to C based and RISCV based lab videos and execute the task of compiling the C code using gcc and riscv compiler</summary><br>
+<summary><b>Task 1:</b>Task is to install all the essential tools required for this samsung-RISCV  Workshop such as Ubuntu on VMBox & refer to C based and RISCV based lab videos and execute the task of compiling the C code using gcc and riscv compiler</summary><br>
 
 ### Install Ubuntu 20.04 LTS on Oracle Virtual Machine Box
 
@@ -79,3 +78,88 @@ this code will be run in terminal to get output as 15 for 1st 5 numbers as shown
 & we have obtained the required main part to compare the execution in assembly language as shown below :
 
 ![image](https://github.com/phoenix-chipdesign/Samsung-RISC-V/blob/main/Task%201/C%20Code%20compiled%20on%20gcc%20Compiler.png)
+
+### End of 1st task
+</details>
+
+------------------------------------------------------------------------------------------------------------------
+
+<details>
+<summary><b>Task 2:</b>SPIKE Simulation and Debugging the C code with Interactive Debugging Mode using Spike.</summary><br>
+	
+
+###SPIKE in RISCV?
+* Spike is a free, open-source C++ simulator for the RISC-V ISA that models a RISC-V core and cache system. It can be used to run programs and a Linux kernel, and can be a starting point for running software on a RISC-V target.
+
+### Testing the SPIKE Simulator for sum1ton.c
+**spike_O1_objdump**
+
+**-O1_format**
+
+![image](https://github.com/phoenix-chipdesign/Samsung-RISC-V/blob/main/Task%202/Spike%20O1%20objdump%20for%20sum1ton.png)
+
+* Initially, the register a0 held the value 0x21000 (hexadecimal).
+* After execution, the value of a0 changed to 0x21180 (hexadecimal).
+* This change occurred because 384 was added in decimal, resulting in the updated value. 
+
+**spike_Ofast_objdump**
+**_Ofast_objdump**
+
+
+![image](https://github.com/phoenix-chipdesign/Samsung-RISC-V/blob/main/Task%202/Spike%20Ofast%20objdump%20for%20sum1ton.png)
+
+* Initially, the register sp held the value 0x3FFFFFFB50 (hexadecimal).
+* After execution, the value of sp changed to 0x3FFFFFFB40 (hexadecimal).
+* This change occurred because -16 was subtracted in decimal, resulting in the updated value.
+
+### Factorial of n number (C program):
+
+**Here i have used n value as 9**
+
+![image](https://github.com/phoenix-chipdesign/Samsung-RISC-V/blob/main/Task%202/Factorialofn.png)
+
+**objdump_O1_format**
+
+
+![image](https://github.com/phoenix-chipdesign/Samsung-RISC-V/blob/main/Task%202/O1%20objdump%20for%20factorialofn.png)
+
+**objdump_Ofast_format**
+
+
+
+![image](https://github.com/phoenix-chipdesign/Samsung-RISC-V/blob/main/Task%202/Ofast%20Objdump%20for%20factorialofn.png)
+
+
+### Testing the SPIKE Simulator for factorialofn.c
+**spike_O1_objdump**
+
+**-O1_format** 
+
+![image](https://github.com/phoenix-chipdesign/Samsung-RISC-V/blob/main/Task%202/Spike%20O1%20objdump%20for%20factorialofn.png)
+
+* Initially, the register a0 held the value 0x2B000 (hexadecimal).
+* After execution, the value of a0 changed to 0x2AC90 (hexadecimal).
+* This change occurred because -880 was subtracted in decimal, resulting in the updated value.
+
+**Spike_Ofast_objdump**
+
+**-Ofast_format** 
+
+
+
+![image](https://github.com/phoenix-chipdesign/Samsung-RISC-V/blob/main/Task%202/Spike%20Ofast%20objdump%20for%20factorialofn.png)
+
+* Initially, the register sp held the value 0x3FFFFFFB50 (hexadecimal).
+* After execution, the value of sp changed to 0x3FFFFFF20 (hexadecimal).
+* This change occurred because -48 was subtracted in decimal, resulting in the updated value.
+
+
+
+### End of 2nd task
+</details>
+
+------------------------------------------------------------------------------------------------------------------
+
+
+
+
