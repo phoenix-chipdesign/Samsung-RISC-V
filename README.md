@@ -510,17 +510,17 @@ Reference GitHub repo is [![GitHub](https://img.shields.io/badge/-GitHub-181717?
   -  run the below code in cmd 
 
   ```
-   git clone https://github.com/anupjanmane18/anup
+   git clone https://github.com/phoenix-chipdesign/phoenix
    ```
 
-* Chanding the working directory to `anup` using the following comand:
+* Chanding the working directory to `phoenix` using the following comand:
   ```
-   cd anup
+   cd phoenix
   ```
 
 * To simulate and run the verilog code , entered the following commands in the terminal:
   ```
-  iverilog -o anup iiitb_rv32i.v iiitb_rv32i_tb.v
+  iverilog -o phoenix iiitb_rv32i.v iiitb_rv32i_tb.v
   ```
   ```
   ./anup
