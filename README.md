@@ -722,3 +722,33 @@ Reference GitHub repo is [![GitHub](https://img.shields.io/badge/-GitHub-181717?
 ------------------------------------------------------------------------------------------------------------------
 
 
+
+<details>
+<summary><b>Task 5:</b> Overview, Components Required, Operational Workflow, Applications, Circuit Connection, Pinout Diagram and Table for Pin connection required to build Gas Detector . </summary>
+
+
+## Overview
+This project is a gas leakage detection system using a CH32V00x microcontroller. The system continuously monitors a gas sensor (LPG sensor) and triggers an alarm (buzzer) and LED indicators when gas is detected. This implementation is useful for safety applications in homes and industries.
+
+## Components Required
+* CH32V00x Microcontroller (or equivalent)
+* LPG Gas Sensor (e.g., MQ-2, MQ-5, or MQ-6)
+* Buzzer
+* LEDs (2 units)
+* Resistors (if required for pull-up/pull-down circuits)
+* Power Supply (3.3V or 5V, depending on the microcontroller and sensor requirements)
+* Connecting Wires & Breadboard
+
+## Table for Pin Connection
+| **Component**         | **CH32V00x Pin** | **Mode**        | **Description**                          |
+|----------------------|-----------------|----------------|------------------------------------------|
+| Gas Sensor (Output)  | GPIOD Pin 2      | Input (Pull-up) | Reads gas sensor output                 |
+| Buzzer              | GPIOD Pin 3      | Output         | Turns on when gas is detected          |
+| LED 1 (Gas Alert)   | GPIOD Pin 4      | Output         | Lights up when gas is detected         |
+| LED 2 (Safe Mode)   | GPIOD Pin 6      | Output         | Lights up when no gas is detected      |
+| VCC                 | 3.3V / 5V        | Power          | Powers the circuit                     |
+| GND                 | Ground           | Power          | Common ground connection |
+
+## Pinout Diagram
+
+![image](https://github.com/user-attachments/assets/72d0e029-075f-408e-b79f-adcf902cc391)
