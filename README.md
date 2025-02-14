@@ -179,7 +179,7 @@ There are 6 instruction formats in RISC-V:
 * In R-type instruction, R stands for register
 * This instruction type is used to execute various arithmetic and logical operations.
 * The entire 32 bits instruction is divided into 6 fields as shown below.
-![R-type](https://github.com/anupjanmane18/samsung-riscv/blob/main/task3/R_type_instruction.png)
+![R-type](https://github.com/phoenix-chipdesign/Samsung-RISC-V/blob/main/Task%203/R_type_instruction.png)
 
 ### 2. I-type Instruction  
 * In RV32, each instruction is of size 32 bits.
@@ -187,7 +187,7 @@ There are 6 instruction formats in RISC-V:
 * This instruction type is used in immediate and load operations.
 *  The entire 32 bits instruction is divided into 5 fields as shown below.
 
-![I-type](https://github.com/anupjanmane18/samsung-riscv/blob/main/task3/I_type_instruction.png)
+![I-type](https://github.com/phoenix-chipdesign/Samsung-RISC-V/blob/main/Task%203/I_type_instruction.png)
 
 **Example: ADDI rd, rs1, imm**
 
@@ -199,7 +199,7 @@ There are 6 instruction formats in RISC-V:
 *  Mainly, this instruction type is used for store operations.
 *  The entire 32 bits instruction is divided into 6 fields as shown below.  
   
-![s-type](https://github.com/anupjanmane18/samsung-riscv/blob/main/task3/S_type_instruction.png)
+![s-type]()
 
 **Example: SW rs2, imm(rs1)**
 
@@ -209,7 +209,7 @@ There are 6 instruction formats in RISC-V:
 * In B-type instruction, B stand for branching which means it is mainly used for branching based on certain conditions.
 *  The entire 32 bits instruction is divided into 8 fields as shown below.  
   
-![B-type](https://github.com/anupjanmane18/samsung-riscv/blob/main/task3/B_type_instruction.png)
+![B-type](https://github.com/phoenix-chipdesign/Samsung-RISC-V/blob/main/Task%203/B_type_instruction.png)
 
 **Example: BEQ rs1, rs2, imm**   
  
@@ -219,7 +219,7 @@ There are 6 instruction formats in RISC-V:
 *  In U-type instruction, U stand for Upper Immediate instructions which means it is simply used to transfer the immediate data into the destination register.
 *  The entire 32 bits instruction is divided into 3 fields as shown below.  
   
-![u-type](https://github.com/anupjanmane18/samsung-riscv/blob/main/task3/U_type_instruction.png)
+![u-type](https://github.com/phoenix-chipdesign/Samsung-RISC-V/blob/main/Task%203/U_type_instruction.png)
 
 **Example: LUI rd, imm**   
 
@@ -229,7 +229,7 @@ There are 6 instruction formats in RISC-V:
 * In J-type instruction, J stand for jump, which means that this instruction format is used to implement jump type instruction.
 *  The entire 32 bits instruction is divided into 6 fields as shown below.  
   
-![j-type](https://github.com/anupjanmane18/samsung-riscv/blob/main/task3/J_type_instruction.png)
+![j-type]()
 
 **Example: JAL rd, imm**
 
