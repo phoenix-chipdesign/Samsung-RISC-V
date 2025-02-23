@@ -229,194 +229,171 @@ There are 6 instruction formats in RISC-V:
 * In J-type instruction, J stand for jump, which means that this instruction format is used to implement jump type instruction.
 *  The entire 32 bits instruction is divided into 6 fields as shown below.  
   
-![j-type]()
+![J_type_instruction](https://github.com/user-attachments/assets/1f9d091d-a1f9-4ac7-9ff9-8e6071fdbd1a)
+
 
 **Example: JAL rd, imm**
 
 ### There are 15 unique instructions from RISCV objdump application as follows:
 ------------------------
-### 1. ADDI sp, sp, -16  
-
-![I_type](https://github.com/user-attachments/assets/a26a328f-86e3-44bd-8197-b1d63b14179a)
-
-
-> * In this instruction ADD means Addition, I means Immediate,
-> * hence this instruction belongs to I-type instruction set.
-
-- **Opcode for ADDI :** `0010011`  
-- **rd = sp :** `00010`  
-- **rs1 = sp :** `00010`  
-- **imm[11:0] = -16 :** `111111110000`  
-- **func3 :** `000`
-  
-**32 bits instruction :** ```111111110000|00010|000|00010|0010011``` 
-
---------------
-### 2. SD ra 8(sp) 
-
-![S_type](https://github.com/user-attachments/assets/eab1ca7b-f6ef-48a0-8ea5-beb055acd129)
-
-
-> * In this instruction SD means store doubleword instruction,
-> *  hence this instruction belongs to S-type instruction set.  
- 
-- **Immediate :** 000000001000 (split into imm[11:5] = 0000000 and imm[4:0] = 01000)
-- **rs1 = sp :** 00010
-- **rs2 = ra :** 00001
-- **funct3:** 011
-- **Opcode for SD :** 0100011
-
-**32-bit instruction:** `0000000|00001|00010|011|01000|0100011`
-
--------------
-### 3. LD ra 8(sp)
-
-![image](https://github.com/user-attachments/assets/1c0d8506-db98-45da-b412-5e2f1180b59e)
-> * In this instruction LD means  load doubleword instruction,
-> *  hence this instruction belongs to S-type instruction set.
-
-- **Immediate :** 000000001000 (split into imm[11:5] = 0000000 and imm[4:0] = 01000)
-- **rs2 = ra :** 00001
-- **rs1 = sp :** 00010
-- **funct3:** 010 (assuming it's a store operation like `SW`)
-- **Opcode for Store :** 0100011
-
-**32-bit instruction:** `0000000|00001|00010|010|01000|0100011`
-
--------------------
-### 4. MV a1 a0 
-
-
-![image](https://github.com/user-attachments/assets/0b0164b6-a416-48d5-8602-74cea98d939f)
-
-**The MV (Move) instruction is a pseudo-instruction in RISC-V, which is equivalent to:
-ADD a1, a0, x0**
-
-> * In this instruction MV means  pseudo-instruction,
-> *  hence this instruction belongs to S-type instruction set.
-
-- **Immediate :** 0000000 (split into imm[11:5] = 0000000 and imm[4:0] = 00000)
-- **rs1 = a0 :** 01010
-- **rs2 = x0 :** 00000
-- **funct3:** 000
-- **Opcode for ADD :** 0100011
-
-**32-bit instruction:** `0000000|00000|01010|000|00000|0100011`
-
-
-------------------------------
-### 5. BEQZ a5 101f0 <exit+0x2c>
-
-![image](https://github.com/user-attachments/assets/8e3d4a6a-59fa-4afd-be84-5b38e3c0185b)
-
-**The BEQZ pseudo-instruction means "branch if equal to zero" and is equivalent to:
-BEQ a5, x0, offset**
-
-
-
-> * In this instruction BWQZ means  pseudo-instruction,short for "branch if equal to zero."
-> *  hence this instruction belongs to B-type instruction set.
-
-- **Immediate :** `1000000011100` (split into imm[12] = `1`, imm[10:5] = `000000`, imm[4:1] = `01110`, imm[11] = `0`)
-- **rs1 = a5 :** `01111`
-- **rs2 = x0 :** `00000`
-- **funct3:** `000`
-- **Opcode for BEQ:** `1100011`
-
-**32-bit instruction:** `1000000|00000|01111|000|01110|1100011`
-
----------------------
-### 6. SRAI s1 a5 0x3
-
-![image](https://github.com/user-attachments/assets/e1236784-f266-45a2-a05e-67706beeb944)
-
-> * In this instruction SRAI means  Shift Right Arithmetic Immediate.
-> *  hence this instruction belongs to I-type instruction set.
-
-- **Immediate :** `000000000011` (split into imm[11:0] = `000000000011`)
-- **rs1 = a5 :** `01111`
-- **rd = s1 :** `01001`
-- **funct3:** `101`
-- **Opcode for SRAI :** `0010011`
-
-**32-bit instruction:** `000000000011|01111|101|01001|0010011`
-
---------------------
-### 7. LUI a0 0x21 
-
-![LUI_U_type](https://github.com/user-attachments/assets/9dcdd9ba-600f-489a-90cb-2bf6a806bbd8)
-
-
-> * In this instruction LUI means Load Upper Immediate,
-> *  hence this instruction belongs to U-type instruction set.
-
-- **Immediate = 0x21 :** `0000000000000_00100001`
-- **rd = a5:** `01010`
-- **Opcode:** `0110111`
-
-**32 bits instruction :** ```0000000000000|00100001|01010|0110111``` 
-
---------------------------
-### 8. JAL ra 10408 <printf>
+### 1. JAL ra 10408 <printf>
 
 ![JAL_J_type](https://github.com/user-attachments/assets/e6aee0d7-2236-4d33-a7ef-9ddfece0cae9)
 
+> * In this instruction JAL means Jump and Link,  
+> * hence this instruction belongs to the J-type instruction set.
 
-> * In this instruction JAL means Jump and Link,
-> *  hence this instruction belongs to J-type instruction set.
+- **Immediate (20 bits)**: 0 1001100000 1 00001010 (split into imm[20] = 0 and imm[10:1] = 1001100000 imm[11] = 1 and imm[19:12] = 00001010)  
+- **rd (ra = x1)**: 00001  
+- **Opcode**: 1101111  
 
-- **Immediate (20 bits)**: `0 1001100000 1 00001010` (split into imm[20] = `0` and imm[10:1] = `1001100000 `imm[11] = `1` and imm[19:12] = `00001010`)
-- **rd (ra = x1)**: `00001`
-- **Opcode**: `1101111`
-		         
-**32 bits instruction :** ```0 1001100000 1 00001010|00001|1101111```
+**32 bits instruction:**  
+0 1001100000 1 00001010|00001|1101111  
 
-------------------
-### 9. AUIPC a5 0xffff0
+---  
 
-![image](https://github.com/user-attachments/assets/dc1b9458-2bce-4ea9-89c1-610b5170cd78)
+### 2. LD ra 8(sp)
 
-> * In this instruction AUIPC means Add Upper Immediate to PC Immediate,
-> *  hence this instruction belongs to U-type instruction set.
+![LD_I_type](https://github.com/user-attachments/assets/1c0d8506-db98-45da-b412-5e2f1180b59e)
 
-- **Immediate :** 11111111111100000000 (split into imm[31:12] = 111111111111 and imm[11:0] = 000000000000)
-- **rd = a5 :** `01111`
-- **Opcode for AUIPC :** `0010111`
+> * In this instruction LD means load doubleword instruction,  
+> * hence this instruction belongs to the I-type instruction set.
 
-**32-bit instruction:** `111111111111|01111|0010111`
+- **Immediate :** 000000001000 (split into imm[11:5] = 0000000 and imm[4:0] = 01000)  
+- **rs1 = sp :** 00010  
+- **rd = ra :** 00001  
+- **funct3:** 011  
+- **Opcode for LD:** 0000011  
 
------------------------
-### 10. J 101b0 <atexit> 
+**32-bit instruction:** 0000000|00001|00010|011|01000|0000011  
 
-![image](https://github.com/user-attachments/assets/d837a001-3588-4ea7-9627-851fb5ff4cc3)
+---  
 
-> * In this instruction J means Jump and Link,
-> *  hence this instruction belongs to J-type instruction set.
+### 3. BEQZ a5 101f0 <exit+0x2c>
 
-- **Immediate :** `0000010000001101010` (split into imm[20] = `0`, imm[10:1] = `0000000000`, imm[11] = `0`, imm[19:12] = `00000100`)
-- **rd = x0 :** `00000`
-- **Opcode for J-type (JAL):** `1101111`
+![BEQZ_B_type](https://github.com/user-attachments/assets/8e3d4a6a-59fa-4afd-be84-5b38e3c0185b)
 
-**32-bit instruction:** `0000000|0000000000|0|00000100|00000|1101111`
+**The BEQZ pseudo-instruction means "branch if equal to zero" and is equivalent to:  
+BEQ a5, x0, offset**  
 
-------------------
-### 11. LW a0 0(sp)
+> * In this instruction BEQZ means pseudo-instruction, short for "branch if equal to zero."  
+> * Hence this instruction belongs to the B-type instruction set.
 
-![image](https://github.com/user-attachments/assets/8aa35f2b-bcd2-4619-a3dd-d22d0f706dff)
+- **Immediate :** 1000000011100 (split into imm[12] = 1, imm[10:5] = 000000, imm[4:1] = 01110, imm[11] = 0)  
+- **rs1 = a5 :** 01111  
+- **rs2 = x0 :** 00000  
+- **funct3:** 000  
+- **Opcode for BEQ:** 1100011  
 
-> * In this instruction, LW means Load Word,
-> * hence this instruction belongs to I-type instruction set.
+**32-bit instruction:** 1000000|00000|01111|000|01110|1100011  
 
-- **Immediate :** `000000000000`
-- **rs1 = sp :** `00010`
-- **rd = a0 :** `01010`
-- **funct3:** `010`
-- **Opcode for LW :** `0000011`
+---  
 
-**32-bit instruction:** `000000000000|00010|010|01010|0000011`
+### 4. ADDI sp, sp, -16
 
----------------------
-### 12. BENZ a5,10188 <do global dtors aux+0x4c>
+![ADDI_I_type](https://github.com/user-attachments/assets/a26a328f-86e3-44bd-8197-b1d63b14179a)
+
+> * In this instruction ADD means Addition, I means Immediate,  
+> * hence this instruction belongs to the I-type instruction set.
+
+- **Opcode for ADDI :** 0010011  
+- **rd = sp :** 00010  
+- **rs1 = sp :** 00010  
+- **imm[11:0] = -16 :** 111111110000  
+- **func3 :** 000  
+
+**32 bits instruction:**  
+111111110000|00010|000|00010|0010011  
+
+---  
+
+### 5. LUI a0 0x21
+
+![LUI_U_type](https://github.com/user-attachments/assets/9dcdd9ba-600f-489a-90cb-2bf6a806bbd8)
+
+> * In this instruction LUI means Load Upper Immediate,  
+> * hence this instruction belongs to the U-type instruction set.
+
+- **Immediate = 0x21 :** 0000000000000_00100001  
+- **rd = a0:** 01010  
+- **Opcode:** 0110111  
+
+**32 bits instruction:**  
+0000000000000|00100001|01010|0110111  
+
+---  
+
+### 6. SRAI s1 a5 0x3
+
+![SRAI_I_type](https://github.com/user-attachments/assets/e1236784-f266-45a2-a05e-67706beeb944)
+
+> * In this instruction SRAI means Shift Right Arithmetic Immediate.  
+> * Hence this instruction belongs to the I-type instruction set.
+
+- **Immediate :** 000000000011 (split into imm[11:0] = 000000000011)  
+- **rs1 = a5 :** 01111  
+- **rd = s1 :** 01001  
+- **funct3:** 101  
+- **Opcode for SRAI :** 0010011  
+
+**32-bit instruction:** 000000000011|01111|101|01001|0010011  
+
+---  
+
+### 7. MV a1 a0
+
+![MV_R_type](https://github.com/user-attachments/assets/0b0164b6-a416-48d5-8602-74cea98d939f)
+
+**The MV (Move) instruction is a pseudo-instruction in RISC-V, which is equivalent to:  
+ADD a1, a0, x0**  
+
+> * In this instruction MV means pseudo-instruction,  
+> * hence this instruction belongs to the R-type instruction set.
+
+- **rs1 = a0 :** 01010  
+- **rs2 = x0 :** 00000  
+- **rd = a1 :** 01011  
+- **funct3:** 000  
+- **Opcode for ADD :** 0110011  
+
+**32-bit instruction:** 0000000|01010|00000|000|01011|0110011  
+
+---  
+
+### 8. SD ra 8(sp)
+
+![SD_S_type](https://github.com/user-attachments/assets/eab1ca7b-f6ef-48a0-8ea5-beb055acd129)
+
+> * In this instruction SD means store doubleword instruction,  
+> * hence this instruction belongs to the S-type instruction set.
+
+- **Immediate :** 000000001000 (split into imm[11:5] = 0000000 and imm[4:0] = 01000)  
+- **rs1 = sp :** 00010  
+- **rs2 = ra :** 00001  
+- **funct3:** 011  
+- **Opcode for SD :** 0100011  
+
+**32-bit instruction:** 0000000|00001|00010|011|01000|0100011  
+
+---
+
+### 9. LBU a5, 1944(gp) # 231a0 <completed.5468>
+
+![image](https://github.com/user-attachments/assets/8f009b1b-1992-45c9-a6ee-aab390d88532)
+
+> * In this instruction LBU means Load Byte Unsigned,
+> * hence this instruction belongs to I-type instruction set
+
+- **Immediate :** 11110001000
+- **rs1 = gp :** 00011
+- **rd = a5 :** 01111
+- **funct3:** 100
+- **Opcode for LBU:** 0000011
+
+**32-bit instruction:** 11110001000|00011|100|01111|0000011
+
+--------------------
+### 10. BENZ a5,10188 <do global dtors aux+0x4c>
     
 ![image](https://github.com/user-attachments/assets/31d8c899-4b38-4779-95d8-ed01a5ca0023)
 
@@ -425,32 +402,76 @@ BEQ a5, x0, offset**
 > * In this instruction BENZ means a specific operation (hypothetical or custom instruction), 
 > * hence this instruction belongs to a custom instruction type.
 
-- **Immediate :** `0000011010010` (split into imm[12] = `0`, imm[10:5] = `000001`, imm[4:1] = `1010`, imm[11] = `0`)
-- **rs1 = a5 :** `01111`
-- **rs2 = x0 :** `00000`
-- **funct3:** `001`
-- **Opcode for custom BENZ:** `1100011`
+- **Immediate :** 0000011010010 (split into imm[12] = 0, imm[10:5] = 000001, imm[4:1] = 1010, imm[11] = 0)
+- **rs1 = a5 :** 01111
+- **rs2 = x0 :** 00000
+- **funct3:** 001
+- **Opcode for custom BENZ:** 1100011
 
-**32-bit instruction:** `0000001|00000|01111|001|1010|1100011`
-
-------------------------------------------------
-### 13. LBU a5, 1944(gp) # 231a0 <completed.5468>
-
-![image](https://github.com/user-attachments/assets/8f009b1b-1992-45c9-a6ee-aab390d88532)
-
-> * In this instruction LBU means Load Byte Unsigned,
-> * hence this instruction belongs to I-type instruction set
-
-- **Immediate :** `11110001000`
-- **rs1 = gp :** `00011`
-- **rd = a5 :** `01111`
-- **funct3:** `100`
-- **Opcode for LBU:** `0000011`
-
-**32-bit instruction:** `11110001000|00011|100|01111|0000011`
+**32-bit instruction:** 0000001|00000|01111|001|1010|1100011
 
 --------------------
-### 14. LI a0 0
+### 11. AUIPC a5 0xffff0
+
+![image](https://github.com/user-attachments/assets/dc1b9458-2bce-4ea9-89c1-610b5170cd78)
+
+> * In this instruction AUIPC means Add Upper Immediate to PC Immediate,
+> * hence this instruction belongs to U-type instruction set.
+
+- **Immediate :** 11111111111100000000 (split into imm[31:12] = 111111111111 and imm[11:0] = 000000000000)
+- **rd = a5 :** 01111
+- **Opcode for AUIPC :** 0010111
+
+**32-bit instruction:** 111111111111|01111|0010111
+
+--------------------
+### 12. SLLI t0, t0,0x1f
+
+![image](https://github.com/user-attachments/assets/caf27b0e-ce37-48a5-b43f-d278bd3c3c11)
+
+> * In this instruction, SLLI means Shift Left Logical Immediate,
+> *hence this instruction belongs to the I-type instruction set.
+
+- **Immediate :** 000000011111 (12-bit immediate value for 0x1f)
+- **rs1 = t0 :** 00101
+- **rd = to :** 00110
+- **funct3:** 001
+- **Opcode for SLLI :** 0010011
+
+**32-bit instruction:** 000000011111|00101|001|00110|0010011
+
+--------------------
+### 13. J 101b0 <atexit> 
+
+![image](https://github.com/user-attachments/assets/d837a001-3588-4ea7-9627-851fb5ff4cc3)
+
+> * In this instruction J means Jump and Link,
+> *  hence this instruction belongs to J-type instruction set.
+
+- **Immediate :** 0000010000001101010 (split into imm[20] = 0, imm[10:1] = 0000000000, imm[11] = 0, imm[19:12] = 00000100)
+- **rd = x0 :** 00000
+- **Opcode for J-type (JAL):** 1101111
+
+**32-bit instruction:** 0000000|0000000000|0|00000100|00000|1101111
+
+--------------------
+### 14. LW a0 0(sp)
+
+![image](https://github.com/user-attachments/assets/8aa35f2b-bcd2-4619-a3dd-d22d0f706dff)
+
+> * In this instruction, LW means Load Word,
+> * hence this instruction belongs to I-type instruction set.
+
+- **Immediate :** 000000000000
+- **rs1 = sp :** 00010
+- **rd = a0 :** 01010
+- **funct3:** 010
+- **Opcode for LW :** 0000011
+
+**32-bit instruction:** 000000000000|00010|010|01010|0000011
+
+--------------------
+### 15. LI a0 0
 
 ![image](https://github.com/user-attachments/assets/732699d9-8bdf-48e5-bbce-ff775e79ea57)
 
@@ -459,30 +480,13 @@ BEQ a5, x0, offset**
 > * In this instruction LI means Load Immediate,
 > * hence this instruction belongs to I-type instruction set
 
-- **Immediate :** `000000000000` (12 bits)
-- **rs1 = x0 :** 00000`
-- **rd = a0 :** 01010`
-- **funct3:** 000`
-- **Opcode for ADDI:** `0010011`
+- **Immediate :** 000000000000 (12 bits)
+- **rs1 = x0 :** 00000
+- **rd = a0 :** 01010
+- **funct3:** 000
+- **Opcode for ADDI:** 0010011
 
-**32-bit instruction:** `000000000000|00000|000|01010|0010011`
-
------------------------------
-### 15. SLLI t0, t0,0x1f
-
-![image](https://github.com/user-attachments/assets/caf27b0e-ce37-48a5-b43f-d278bd3c3c11)
-
-> * In this instruction, SLLI means Shift Left Logical Immediate,
-> *hence this instruction belongs to the I-type instruction set.
-
-- **Immediate :** `000000011111` (12-bit immediate value for 0x1f)
-- **rs1 = t0 :** `00101`
-- **rd = to :** `00110`
-- **funct3:** `001`
-- **Opcode for SLLI :** `0010011`
-
-**32-bit instruction:** `000000011111|00101|001|00110|0010011`
-
+**32-bit instruction:** 000000000000|00000|000|01010|0010011
 ### End of 3rd task
 </details>
 
@@ -490,7 +494,7 @@ BEQ a5, x0, offset**
 
 
 <details>
-<summary><b>Task 4:</b> Use this RISC-V Core Verilog netlist and testbench for functional simulation experiment. Upload waveform snapshots for the commands on your GitHub. </summary>
+<summary><b>Task 4:</b> Use this RISC-V Core Verilog netlist and testbench for functional simulation experiment. </summary>
 
 Reference GitHub repo is [![GitHub](https://img.shields.io/badge/-GitHub-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/vinayrayapati/rv32i/blob/main/iiitb_rv32i.v)
 
