@@ -88,8 +88,8 @@ this code will be run in terminal to get output as 15 for 1st 5 numbers as shown
 <summary><b>Task 2:</b>SPIKE Simulation and Debugging the C code with Interactive Debugging Mode using Spike.</summary><br>
 	
 
-###SPIKE in RISCV?
-* Spike is a free, open-source C++ simulator for the RISC-V ISA that models a RISC-V core and cache system. It can be used to run programs and a Linux kernel, and can be a starting point for running software on a RISC-V target.
+### SPIKE in RISCV?
+Spike is a free, open-source C++ simulator for the RISC-V ISA that models a RISC-V core and cache system. It can be used to run programs and a Linux kernel, and can be a starting point for running software on a RISC-V target.
 
 ### Testing the SPIKE Simulator for sum1ton.c
 **spike_O1_objdump**
