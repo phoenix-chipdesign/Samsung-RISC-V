@@ -199,7 +199,8 @@ There are 6 instruction formats in RISC-V:
 *  Mainly, this instruction type is used for store operations.
 *  The entire 32 bits instruction is divided into 6 fields as shown below.  
   
-![s-type]()
+![S_type_instruction](https://github.com/user-attachments/assets/7af476e1-94ee-466c-935b-d9ee5000b1ec)
+
 
 **Example: SW rs2, imm(rs1)**
 
