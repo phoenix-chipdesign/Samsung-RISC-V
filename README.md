@@ -571,7 +571,7 @@ Reference GitHub repo is [![GitHub](https://img.shields.io/badge/-GitHub-181717?
 
 ### Instruction 2. SUB
 
-![image](https://github.com/user-attachments/assets/8ae77a86-82ae-4b89-93cc-0e5e060876b7)
+![Screenshot 2025-01-22 220359](https://github.com/user-attachments/assets/934478f0-3c8a-4698-ab99-9c9742883fb7)
 
 
 ### Detailed Explanation:
@@ -586,7 +586,8 @@ Reference GitHub repo is [![GitHub](https://img.shields.io/badge/-GitHub-181717?
 
 ### Instruction 3. AND
 
-![image](https://github.com/user-attachments/assets/d8438554-d42e-4585-96de-55d731174ad8)
+![Screenshot 2025-01-22 220539](https://github.com/user-attachments/assets/4f5a32d7-8b19-4fe3-aabe-5cae7b7e0b0a)
+
 
 
 #### Key Points:
@@ -611,7 +612,8 @@ Reference GitHub repo is [![GitHub](https://img.shields.io/badge/-GitHub-181717?
 
 ### Instruction 4. OR 
 
-![image](https://github.com/user-attachments/assets/5282ec13-2fd0-4a2a-9bd0-fa6dd565709a)
+![Screenshot 2025-01-22 220625](https://github.com/user-attachments/assets/1eab13ee-4cb4-48e9-85db-4e95704b74d5)
+
 
 
 **Description:**
@@ -624,7 +626,8 @@ Reference GitHub repo is [![GitHub](https://img.shields.io/badge/-GitHub-181717?
 
 ### Instruction 5. XOR
 
-![image](https://github.com/user-attachments/assets/c385fa51-f561-4293-b971-838145925155)
+![Screenshot 2025-01-22 224503](https://github.com/user-attachments/assets/08c73418-73fd-4f96-8355-57d06f3fc193)
+
 
 
 **Description:**
