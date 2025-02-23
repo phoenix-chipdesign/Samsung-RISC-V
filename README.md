@@ -523,7 +523,7 @@ Reference GitHub repo is [![GitHub](https://img.shields.io/badge/-GitHub-181717?
   iverilog -o phoenix iiitb_rv32i.v iiitb_rv32i_tb.v
   ```
   ```
-  ./anup
+  ./phoenix
   ```
 * For seeing the output waveform I used the following command:
   ```
@@ -555,165 +555,142 @@ Reference GitHub repo is [![GitHub](https://img.shields.io/badge/-GitHub-181717?
 |  SRL R16, R14, R2  |  32'h0030a123  |  32'h00271803  |
 |  SLL R15, R1, R2  |  32'h002097b3  |  32'h00208783  |  
 
-### Instruction 1. ADD 
+### **Instruction 1: ADD**
 
 ![image](https://github.com/user-attachments/assets/f1b4a40d-b584-4fde-bb48-2132a76a858d)
 
-### Detailed Explanation:
-- **Values Stored in Two Different Registers**:
-  - The waveform indicates that the values `1` and `2` are stored in registers `r1` and `r2` respectively (`ID_EX_A` and `ID_EX_B`).
+**Overview:**
+- The ADD instruction performs an arithmetic addition between two register values and stores the result in a specified destination register.
 
-- **32-bit Instruction for ADD `R6, R2, R1`**:
-  - The instruction `0x02208300` represents the operation `add r6, r1, r2`. This instruction tells the processor to add the values in registers `r1` and `r2` and store the result in register `r6`.
+**Execution Details:**
+1. The instruction `ADD R6, R1, R2` (0x02208300) is fetched from memory.
+2. The values stored in registers R1 and R2 are identified as 1 and 2, respectively.
+3. The Arithmetic Logic Unit (ALU) executes the addition: `1 + 2 = 3`.
+4. The result (3) is written into register R6.
 
-- **Output of ADD Operation**:
-  - The ALU performs the addition `1 + 2`, resulting in `3`, which is shown in the `EX_MEM_ALUOUT` signal.
+---
 
-### Instruction 2. SUB
+### **Instruction 2: SUB**
 
 ![Screenshot 2025-01-22 220359](https://github.com/user-attachments/assets/934478f0-3c8a-4698-ab99-9c9742883fb7)
 
+**Overview:**
+- The SUB instruction performs a subtraction operation between two register values and stores the result in a specified destination register.
 
-### Detailed Explanation:
-- **Values Stored in Two Different Registers**:
-  - The waveform indicates that the values `1` and `2` are stored in registers `r1` and `r2` respectively (`ID_EX_A` and `ID_EX_B`).
+**Execution Details:**
+1. The instruction `SUB R7, R1, R2` (0x02208380) is fetched.
+2. The values in registers R1 and R2 are 1 and 2, respectively.
+3. The ALU processes the subtraction: `1 - 2 = -1`.
+4. The result (-1, represented as `0xFFFFFFFF` in two’s complement) is stored in register R7.
 
-- **32-bit Instruction for SUB `R7, R2, R1`**:
-  - The instruction `0x02208380` represents the operation `sub r7, r1, r2`. This instruction tells the processor to add the values in registers `r1` and `r2` and store the result in register `r7`.
+---
 
-- **Output of ADD Operation**:
-  - The ALU performs the addition `1 - 2`, resulting in `-1(FFFFFFFF)`, which is shown in the `EX_MEM_ALUOUT` signal.
-
-### Instruction 3. AND
+### **Instruction 3: AND**
 
 ![Screenshot 2025-01-22 220539](https://github.com/user-attachments/assets/4f5a32d7-8b19-4fe3-aabe-5cae7b7e0b0a)
 
 
+**Overview:**
+- This instruction performs a bitwise AND operation between two register values and stores the result in a destination register.
 
-#### Key Points:
-1. **Values Stored in Registers**:
-   - `ID_EX_A` holds `3`, corresponding to the value in register `R1`.
-   - `ID_EX_B` holds `1`, corresponding to the value in register `R3`.
+**Execution Details:**
+1. The instruction `AND R8, R1, R3` (0x0230A400) is fetched.
+2. Register R1 holds the value 3 (`0011` in binary), and register R3 holds 1 (`0001` in binary).
+3. The ALU executes the bitwise AND: `0011 & 0001 = 0001`.
+4. The result (1) is stored in register R8.
 
-2. **Instruction Fetching**:
-   - `EX_MEM_IR` signal shows the value `0x0230A400`, which is the 32-bit instruction for `AND R8, R1, R3`.
+---
 
-3. **ALU Operation**:
-   - The output of the ALU operation `EX_MEM_ALUOUT` shows `1`. This is the result of the bitwise AND operation `3 & 1`:
-     - `3` in binary is `0011`
-     - `1` in binary is `0001`
-     - Bitwise AND of `0011 & 0001` results in `0001`, which is `1` in decimal.
-
-4. **Steps in the Processor Pipeline**:
-   - **Fetch Stage**: Instruction `AND R8, R1, R3` is fetched.
-   - **Decode Stage**: The values of `R1` and `R3` are read into `ID_EX_A` and `ID_EX_B`.
-   - **Execute Stage**: The ALU performs the bitwise AND operation, resulting in `1`.
-   - **Memory and Write Back Stages**: (Not shown explicitly but understood to follow.)
-
-### Instruction 4. OR 
+### **Instruction 4: OR**
 
 ![Screenshot 2025-01-22 220625](https://github.com/user-attachments/assets/1eab13ee-4cb4-48e9-85db-4e95704b74d5)
 
+**Overview:**
+- This instruction performs a bitwise OR operation between two registers and stores the result in a destination register.
 
+**Execution Details:**
+1. The instruction `OR R9, R2, R5` is fetched.
+2. The values in R2 and R5 are 2 (`0010`) and 5 (`0101`), respectively.
+3. The ALU performs bitwise OR: `0010 | 0101 = 0111`.
+4. The result (7) is stored in register R9.
 
-**Description:**
-- This instruction performs a bitwise OR operation between the values in registers R2 and R5 and stores the result in register R9.
+---
 
-**Details:**
-- The values in R2 and R5 are `2` (binary: `0010`) and `5` (binary: `0101`), respectively.
-- The bitwise OR operation (`0010 | 0101`) results in `7` (binary: `0111`).
-
-
-### Instruction 5. XOR
+### **Instruction 5: XOR**
 
 ![Screenshot 2025-01-22 224503](https://github.com/user-attachments/assets/08c73418-73fd-4f96-8355-57d06f3fc193)
 
+**Overview:**
+- This instruction performs a bitwise XOR operation between two registers and stores the result in a destination register.
 
+**Execution Details:**
+1. The instruction `XOR R10, R1, R4` is fetched.
+2. The values in R1 and R4 are 1 (`0001`) and 4 (`0100`), respectively.
+3. The ALU executes bitwise XOR: `0001 ^ 0100 = 0101`.
+4. The result (5) is stored in register R10.
 
-**Description:**
-- This instruction performs a bitwise XOR operation between the values in registers R1 and R4 and stores the result in register R10.
+---
 
-**Details:**
-- The values in R1 and R4 are `1` (binary: `0001`) and `4` (binary: `0100`), respectively.
-- The bitwise XOR operation (`0001 ^ 0100`) results in `5` (binary: `0101`).
-
-
-### Instruction 6. SLT 
+### **Instruction 6: SLT (Set Less Than)**
 
 ![Screenshot 2025-01-22 224702](https://github.com/user-attachments/assets/683dafb3-af55-409b-949e-89f8655a6296)
 
-1. **Instruction**: `SLT R1, R2, R4`
-   - This instruction performs a "Set Less Than" (SLT) operation. It compares the values in registers `R2` and `R4` and sets the destination register `R1` to 1 if the value in `R2` is less than the value in `R4`; otherwise, it sets `R1` to 0.
+**Overview:**
+- This instruction sets a register to 1 if one value is less than another; otherwise, it sets it to 0.
 
-2. **Waveform Signals**:
-   - **EX_MEM_IR[31:0]**: The instruction register for the Execution/Memory (EX/MEM) pipeline stage, holding the 32-bit instruction `0x202415580`.
-   - **ID_EX_A[31:0]**: The value of register `R2`.
-   - **ID_EX_B[31:0]**: The value of register `R4`.
-   - **EX_MEM_ALUOUT[31:0]**: The output of the Arithmetic Logic Unit (ALU) after performing the SLT operation.
+**Execution Details:**
+1. The instruction `SLT R1, R2, R4` is fetched.
+2. R2 holds 2, and R4 holds 4.
+3. The ALU compares the values: `2 < 4` is true, so the result is 1.
+4. The result (1) is stored in register R1.
 
-3. **Waveform Details**:
-   - **Values in Registers**: The values stored in `R2` and `R4` are 2 and 4, respectively.
-   - **SLT Operation**: The SLT operation compares these values. Since 2 < 4, the output is 1, indicating `R2` is less than `R4`.
+---
 
-4. **Annotations**:
-   - **Values stored in two different registers**: Highlighting the values of `R2` and `R4`.
-   - **Output of SLT will be 1**: Explains that if the value in `R2` is less than `R4`, the result will be 1; otherwise, it will be 0.
-   - **32 bits instruction for SLT R1, R2, R4**: Shows the binary representation of the SLT instruction.
-
-### Instruction 7. ADDI 
+### **Instruction 7: ADDI (Add Immediate)**
 
 ![image](https://github.com/user-attachments/assets/4317b78c-4289-42af-9d2a-e867f904b3f2)
 
-1. **Instruction**: `ADDI R12, R4, 5`
-   - This instruction performs an "Add Immediate" (ADDI) operation. It adds the immediate value 5 to the value in register `R4` and stores the result in register `R12`.
+**Overview:**
+- The ADDI instruction adds an immediate value to a register and stores the result in a destination register.
 
-2. **Waveform Signals**:
-   - **EX_MEM_IR[31:0]**: The instruction register for the Execution/Memory (EX/MEM) pipeline stage, holding the 32-bit instruction `0x00520600`.
-   - **ID_EX_A[31:0]**: The value of register `R4`.
-   - **ID_EX_IMMEDIATE[31:0]**: The immediate value 5.
-   - **EX_MEM_ALUOUT[31:0]**: The output of the ALU after performing the ADDI operation.
+**Execution Details:**
+1. The instruction `ADDI R12, R4, 5` is fetched.
+2. The value in R4 is 4.
+3. The ALU performs the addition: `4 + 5 = 9`.
+4. The result (9) is stored in register R12.
 
-3. **Waveform Details**:
-   - **Values in Registers and Immediate**: The value stored in `R4` is 4, and the immediate value is 5.
-   - **ADDI Operation**: The ADDI operation adds these values. The result is 9, which is stored in `R12`.
+---
 
-4. **Annotations**:
-   - **Stored value in Register and an Immediate value**: Highlights the values involved in the ADDI operation.
-   - **Output of ADDI will be 9**: Explains that the value in `R4` (4) added to the immediate value (5) results in 9.
-   - **32 bits instruction for ADDI R12, R4, 5**: Shows the binary representation of the ADDI instruction.
-
-### Instruction 8. BEQ 
+### **Instruction 8: BEQ (Branch if Equal)**
 
 ![image](https://github.com/user-attachments/assets/fae591e8-7c12-4cd5-8069-feab798b8710)
 
-**Description:**
-- The `BEQ` (Branch if Equal) instruction compares the values in registers `R0` and `R0`.
-- If the values are equal, it adds the immediate value `15` to the program counter (PC).
 
-**Waveform Analysis:**
-- **Initial State:** The program counter (PC) is initially at `10`.
-- **Registers:** Both `R0` registers contain the value `0`.
-- **Condition:** Since `R0` is equal to `R0`, the condition is true.
-- **PC Update:** The instruction adds `15` to the PC.
-  - PC = 10(0A in hexa) + 15 = 25(19 in hexa) .
-- **Result:** The updated PC value is `25(19 in hexa)`.
+**Overview:**
+- This instruction checks if two register values are equal and updates the program counter (PC) if the condition is met.
 
+**Execution Details:**
+1. The instruction `BEQ R0, R0, 15` is fetched.
+2. The values in R0 and R0 are both 0.
+3. Since they are equal, the PC is updated: `PC = 10 + 15 = 25 (0x19 in hexadecimal)`.
 
-### Instruction 9. BNE 
+---
+
+### **Instruction 9: BNE (Branch if Not Equal)**
 
 ![image](https://github.com/user-attachments/assets/6aa52a22-cf8b-4d19-9433-6bbc8038afd6)
 
-**Description:**
-- The `BEQ` (Branch if not Equal) instruction compares the values in registers `R0` and `R0`.
-- If the values are not equal, it adds the immediate value `20` to the program counter (PC).
 
-**Waveform Analysis:**
-- **Initial State:** The program counter (PC) is initially at `10`.
-- **Registers:** Both `R0` registers contain the value `0`.
-- **Condition:** Since `R0` is equal to `R0`, the condition is true.
-- **PC Update:** The instruction adds `20` to the PC.
-  - PC = 26(1A in hexa) + 20 = 46(2E in hexa) .
-- **Result:** The updated PC value is `46(2E in hexa)`.
+
+**Overview:**
+- This instruction checks if two register values are not equal and updates the PC accordingly.
+
+**Execution Details:**
+1. The instruction `BNE R0, R0, 20` is fetched.
+2. The values in R0 and R0 are both 0.
+3. Since they are equal, the branch is not taken, and the PC remains unchanged.
+
+---
 
 ### Instruction 10. SLL
 
